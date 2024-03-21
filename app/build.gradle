@@ -112,7 +112,7 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:2.2.7'
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'agency.tango.android:material-intro-screen:0.0.5'
-    implementation 'cat.ereza:customactivityoncrash:2.2.0'
+//    implementation 'cat.ereza:customactivityoncrash:2.2.0'
     implementation 'de.psdev.licensesdialog:licensesdialog:1.8.3'
     implementation 'com.github.championswimmer:SimpleFingerGestures_Android_Library:1.1'
     implementation 'com.nononsenseapps:filepicker:4.2.1'

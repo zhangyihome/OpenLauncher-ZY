@@ -54,33 +54,33 @@ public class DesktopOptionView extends FrameLayout {
     }
 
     public void updateHomeIcon(final boolean home) {
-        post(new Runnable() {
-            @Override
-            public void run() {
-                if (home) {
-                    _actionAdapters[0].getAdapterItem(1)._icon = getContext().getResources().getDrawable(R.drawable.ic_star);
-                } else {
-                    _actionAdapters[0].getAdapterItem(1)._icon = getContext().getResources().getDrawable(R.drawable.ic_star_border);
-                }
-                _actionAdapters[0].notifyAdapterItemChanged(1);
-            }
-        });
+//        post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (home) {
+//                    _actionAdapters[0].getAdapterItem(1)._icon = getContext().getResources().getDrawable(R.drawable.ic_star);
+//                } else {
+//                    _actionAdapters[0].getAdapterItem(1)._icon = getContext().getResources().getDrawable(R.drawable.ic_star_border);
+//                }
+//                _actionAdapters[0].notifyAdapterItemChanged(1);
+//            }
+//        });
     }
 
     public void updateLockIcon(final boolean lock) {
-        if (_actionAdapters.length == 0) return;
-        if (_actionAdapters[0].getAdapterItemCount() == 0) return;
-        post(new Runnable() {
-            @Override
-            public void run() {
-                if (lock) {
-                    _actionAdapters[0].getAdapterItem(2)._icon = getContext().getResources().getDrawable(R.drawable.ic_lock);
-                } else {
-                    _actionAdapters[0].getAdapterItem(2)._icon = getContext().getResources().getDrawable(R.drawable.ic_lock_open);
-                }
-                _actionAdapters[0].notifyAdapterItemChanged(2);
-            }
-        });
+//        if (_actionAdapters.length == 0) return;
+//        if (_actionAdapters[0].getAdapterItemCount() == 0) return;
+//        post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (lock) {
+//                    _actionAdapters[0].getAdapterItem(2)._icon = getContext().getResources().getDrawable(R.drawable.ic_lock);
+//                } else {
+//                    _actionAdapters[0].getAdapterItem(2)._icon = getContext().getResources().getDrawable(R.drawable.ic_lock_open);
+//                }
+//                _actionAdapters[0].notifyAdapterItemChanged(2);
+//            }
+//        });
     }
 
     @Override
@@ -158,16 +158,16 @@ public class DesktopOptionView extends FrameLayout {
 
     private void initItems(final Typeface typeface, final com.mikepenz.fastadapter.listeners.OnClickListener<IconLabelItem> clickListener, int itemWidth) {
         List<IconLabelItem> itemsTop = new ArrayList<>();
-        itemsTop.add(createItem(R.drawable.ic_delete, R.string.remove, typeface, itemWidth));
-        itemsTop.add(createItem(R.drawable.ic_star, R.string.home, typeface, itemWidth));
-        itemsTop.add(createItem(R.drawable.ic_lock, R.string.lock, typeface, itemWidth));
+//        itemsTop.add(createItem(R.drawable.ic_delete, R.string.remove, typeface, itemWidth));
+//        itemsTop.add(createItem(R.drawable.ic_star, R.string.home, typeface, itemWidth));
+//        itemsTop.add(createItem(R.drawable.ic_lock, R.string.lock, typeface, itemWidth));
         _actionAdapters[0].set(itemsTop);
         _actionAdapters[0].withOnClickListener(clickListener);
 
         List<IconLabelItem> itemsBottom = new ArrayList<>();
         itemsBottom.add(createItem(R.drawable.ic_dashboard, R.string.widget, typeface, itemWidth));
-        itemsBottom.add(createItem(R.drawable.ic_launch, R.string.action, typeface, itemWidth));
-        itemsBottom.add(createItem(R.drawable.ic_settings, R.string.pref_title__settings, typeface, itemWidth));
+//        itemsBottom.add(createItem(R.drawable.ic_launch, R.string.action, typeface, itemWidth));
+//        itemsBottom.add(createItem(R.drawable.ic_settings, R.string.pref_title__settings, typeface, itemWidth));
         _actionAdapters[1].set(itemsBottom);
         _actionAdapters[1].withOnClickListener(clickListener);
 
