@@ -167,7 +167,7 @@ public class DesktopOptionView extends FrameLayout {
         List<IconLabelItem> itemsBottom = new ArrayList<>();
         itemsBottom.add(createItem(R.drawable.ic_dashboard, R.string.widget, typeface, itemWidth));
 //        itemsBottom.add(createItem(R.drawable.ic_launch, R.string.action, typeface, itemWidth));
-//        itemsBottom.add(createItem(R.drawable.ic_settings, R.string.pref_title__settings, typeface, itemWidth));
+        itemsBottom.add(createItem(R.drawable.ic_settings, R.string.pref_title__settings, typeface, itemWidth));
         _actionAdapters[1].set(itemsBottom);
         _actionAdapters[1].withOnClickListener(clickListener);
 

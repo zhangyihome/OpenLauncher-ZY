@@ -1,6 +1,7 @@
 package com.benny.openlauncher.widget;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
@@ -46,7 +47,6 @@ public final class Dock extends CellContainer implements DesktopCallback {
                 addItemToPage(item, 0);
             }
         }
-
         // call onMeasure to set the height
         measure(getMeasuredWidth(), getMeasuredHeight());
     }

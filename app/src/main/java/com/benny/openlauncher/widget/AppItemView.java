@@ -256,6 +256,7 @@ public class AppItemView extends View implements Drawable.Callback, Notification
         public Builder setActionItem(Item item) {
             _view.setLabel(item.getLabel());
             _view.setIcon(ContextCompat.getDrawable(Setup.appContext(), R.drawable.item_drawer));
+            _view.setOnLongClickListener(null);
             _view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
