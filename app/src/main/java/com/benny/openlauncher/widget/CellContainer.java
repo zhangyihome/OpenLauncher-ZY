@@ -339,34 +339,34 @@ public class CellContainer extends ViewGroup {
             return;
 
         float s = 7f;
-        for (int x = 0; x < _cellSpanH; x++) {
-            for (int y = 0; y < _cellSpanV; y++) {
-                if (x >= _cells.length || y >= _cells[0].length)
-                    continue;
-
-                Rect cell = _cells[x][y];
-
-                canvas.save();
-                canvas.rotate(45f, cell.left, cell.top);
-                canvas.drawRect(cell.left - s, cell.top - s, cell.left + s, cell.top + s, _paint);
-                canvas.restore();
-
-                canvas.save();
-                canvas.rotate(45f, cell.left, cell.bottom);
-                canvas.drawRect(cell.left - s, cell.bottom - s, cell.left + s, cell.bottom + s, _paint);
-                canvas.restore();
-
-                canvas.save();
-                canvas.rotate(45f, cell.right, cell.top);
-                canvas.drawRect(cell.right - s, cell.top - s, cell.right + s, cell.top + s, _paint);
-                canvas.restore();
-
-                canvas.save();
-                canvas.rotate(45f, cell.right, cell.bottom);
-                canvas.drawRect(cell.right - s, cell.bottom - s, cell.right + s, cell.bottom + s, _paint);
-                canvas.restore();
-            }
-        }
+//        for (int x = 0; x < _cellSpanH; x++) {
+//            for (int y = 0; y < _cellSpanV; y++) {
+//                if (x >= _cells.length || y >= _cells[0].length)
+//                    continue;
+//
+//                Rect cell = _cells[x][y];
+//
+//                canvas.save();
+//                canvas.rotate(45f, cell.left, cell.top);
+//                canvas.drawRect(cell.left - s, cell.top - s, cell.left + s, cell.top + s, _paint);
+//                canvas.restore();
+//
+//                canvas.save();
+//                canvas.rotate(45f, cell.left, cell.bottom);
+//                canvas.drawRect(cell.left - s, cell.bottom - s, cell.left + s, cell.bottom + s, _paint);
+//                canvas.restore();
+//
+//                canvas.save();
+//                canvas.rotate(45f, cell.right, cell.top);
+//                canvas.drawRect(cell.right - s, cell.top - s, cell.right + s, cell.top + s, _paint);
+//                canvas.restore();
+//
+//                canvas.save();
+//                canvas.rotate(45f, cell.right, cell.bottom);
+//                canvas.drawRect(cell.right - s, cell.bottom - s, cell.right + s, cell.bottom + s, _paint);
+//                canvas.restore();
+//            }
+//        }
 
         //Animating alpha and drawing projected image
         HomeActivity homeActivity = HomeActivity.Companion.getLauncher();
