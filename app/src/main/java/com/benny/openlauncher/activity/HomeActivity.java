@@ -18,6 +18,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -71,7 +72,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public final class HomeActivity extends Activity implements OnDesktopEditListener {
+public final class HomeActivity extends AppCompatActivity implements OnDesktopEditListener {
     public static final Companion Companion = new Companion();
     public static final int REQUEST_CREATE_APPWIDGET = 0x6475;
     public static final int REQUEST_PERMISSION_STORAGE = 0x3648;
@@ -564,7 +565,7 @@ public final class HomeActivity extends Activity implements OnDesktopEditListene
 
     @Override
     protected void onDestroy() {
-        _appWidgetHost.stopListening();
+        _appWidgetHost = null;
         _launcher = null;
 
         unregisterReceiver(_appUpdateReceiver);
