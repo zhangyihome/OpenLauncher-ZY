@@ -83,6 +83,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 Tool.saveIcon(_context, Tool.drawableToBitmap(item.getIcon()), Integer.toString(item.getId()));
                 itemValues.put(COLUMN_DATA, Tool.getIntentAsString(item.getIntent()));
                 break;
+            case APP_RECOMMEND:
+                Tool.saveIcon(_context, Tool.drawableToBitmap(item.getIcon()), item.getLabel());
+                itemValues.put(COLUMN_DATA, item.getLabel());
+                break;
             case GROUP:
                 for (Item tmp : item.getItems()) {
                     if (tmp != null) {
@@ -215,6 +219,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String concat = "";
         switch (item.getType()) {
+            case APP_RECOMMEND:
+                Tool.saveIcon(_context, Tool.drawableToBitmap(item.getIcon()), item.getLabel());
+                itemValues.put(COLUMN_DATA, item.getLabel());
+                break;
             case APP:
             case SHORTCUT:
                 Tool.saveIcon(_context, Tool.drawableToBitmap(item.getIcon()), Integer.toString(item.getId()));
@@ -276,9 +284,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String[] dataSplit;
         switch (type) {
+            case APP_RECOMMEND: {
+                App app = Setup.get().getAppLoader().findItemApp(item);
+                item.setIcon(app != null ? app.getIcon() : null);
+                break;
+            }
             case APP: {
                 item.setIntent(Tool.getIntentFromString(data));
-                item.setShortcutInfo(Tool.getShortcutInfo(_context, item.getIntent().getComponent().getPackageName()));
+                if (item.getIntent() != null && item.getIntent().getComponent() != null) {
+                    item.setShortcutInfo(Tool.getShortcutInfo(_context, item.getIntent().getComponent().getPackageName()));
+                }
                 App app = Setup.get().getAppLoader().findItemApp(item);
                 item.setIcon(app != null ? app.getIcon() : null);
                 break;
@@ -322,12 +337,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void addPage(int position) {
         _db.execSQL("UPDATE " + TABLE_HOME + " SET " + COLUMN_PAGE + " = " + COLUMN_PAGE + " + 1 WHERE " + COLUMN_PAGE + " >= ?",
-                new String[] {String.valueOf(position)});
+                new String[]{String.valueOf(position)});
     }
 
     public void removePage(int position) {
         _db.execSQL("UPDATE " + TABLE_HOME + " SET " + COLUMN_PAGE + " = " + COLUMN_PAGE + " - 1 WHERE " + COLUMN_PAGE + " > ?",
-                new String[] {String.valueOf(position)});
+                new String[]{String.valueOf(position)});
     }
 
     public void open() {

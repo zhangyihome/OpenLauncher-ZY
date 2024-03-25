@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,7 @@ import com.benny.openlauncher.receivers.ShortcutReceiver;
 import com.benny.openlauncher.util.AppManager;
 import com.benny.openlauncher.util.AppSettings;
 import com.benny.openlauncher.util.DatabaseHelper;
+import com.benny.openlauncher.util.Definitions;
 import com.benny.openlauncher.util.Definitions.ItemPosition;
 import com.benny.openlauncher.util.LauncherAction;
 import com.benny.openlauncher.util.LauncherAction.Action;
@@ -227,6 +229,7 @@ public final class HomeActivity extends AppCompatActivity implements OnDesktopEd
             Item appDrawerBtnItem = Item.newActionItem(8);
             appDrawerBtnItem._x = 2;
             _db.saveItem(appDrawerBtnItem, 0, ItemPosition.Dock);
+            getDesktop().postDelayed(this::addRecommend,100);
         }
         Setup.appLoader().addUpdateListener(new AppUpdateListener() {
             @Override
@@ -628,5 +631,20 @@ public final class HomeActivity extends AppCompatActivity implements OnDesktopEd
 
     public final void closeAppDrawer() {
         getAppDrawerController().close(cx, cy);
+    }
+
+    private void addRecommend() {
+        Item group = Item.newGroupItem();
+        group.setLabel("建议应用");
+        group.setId(1000);
+        group._location = ItemPosition.Group;
+        for (int i = 0; i < 2; i++) {
+            Item item = Item.newAppRecommendItem(i);
+            group.getGroupItems().add(item);
+            _db.saveItem(item, 0, ItemPosition.Group);
+            _db.saveItem(item, Definitions.ItemState.Hidden);
+        }
+        _db.saveItem(group, 0, ItemPosition.Desktop);
+        getDesktop().addItemToPage(group, 0);
     }
 }

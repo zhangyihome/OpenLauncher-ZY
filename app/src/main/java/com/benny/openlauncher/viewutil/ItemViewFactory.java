@@ -53,6 +53,11 @@ public class ItemViewFactory {
             }
 
             switch (item.getType()) {
+                case APP_RECOMMEND:
+                    final App appRecommend = Setup.appLoader().findItemApp(item);
+                    if (appRecommend == null) break;
+                    view = builder.setAppItem(item).getView();
+                    break;
                 case APP:
                     final App app = Setup.appLoader().findItemApp(item);
                     if (app == null) break;

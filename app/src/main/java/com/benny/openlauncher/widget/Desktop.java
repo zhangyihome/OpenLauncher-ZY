@@ -67,9 +67,10 @@ public final class Desktop extends ViewPager implements DesktopCallback {
                 Type type = item._type;
                 if (type != null) {
                     switch (type) {
+                        case APP_RECOMMEND:
                         case APP:
                         case SHORTCUT:
-                            if (Type.APP.equals(dropItem._type) || Type.SHORTCUT.equals(dropItem._type)) {
+                            if (Type.APP.equals(dropItem._type) || Type.SHORTCUT.equals(dropItem._type) || Type.APP_RECOMMEND.equals(dropItem._type)) {
                                 parent.removeView(itemView);
                                 Item group = Item.newGroupItem();
                                 item._location = ItemPosition.Group;
@@ -195,7 +196,7 @@ public final class Desktop extends ViewPager implements DesktopCallback {
         public void addPageLeft() {
             // Shift pages to the right (including home page)
             HomeActivity._db.addPage(0);
-            Setup.appSettings().setDesktopPageCurrent(Setup.appSettings().getDesktopPageCurrent()+1);
+            Setup.appSettings().setDesktopPageCurrent(Setup.appSettings().getDesktopPageCurrent() + 1);
 
             _desktop.getPages().add(0, getItemLayout());
             notifyDataSetChanged();

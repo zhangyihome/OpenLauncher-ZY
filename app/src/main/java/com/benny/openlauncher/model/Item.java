@@ -4,7 +4,10 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 
+import com.benny.openlauncher.R;
+import com.benny.openlauncher.manager.Setup;
 import com.benny.openlauncher.util.Definitions;
 import com.benny.openlauncher.util.Definitions.ItemPosition;
 import com.benny.openlauncher.util.Tool;
@@ -44,6 +47,15 @@ public class Item {
         Random random = new Random();
         _id = random.nextInt();
         _label = "";
+    }
+
+    public static Item newAppRecommendItem(int i) {
+        Item item = new Item();
+        item._type = Type.APP_RECOMMEND;
+        item.setLabel("推荐应用1111");
+        item._location = ItemPosition.Group;
+        item.setLabel("推荐应用" + i);
+        return item;
     }
 
     public static Item newAppItem(App app) {
@@ -185,6 +197,7 @@ public class Item {
 
     public enum Type {
         APP,
+        APP_RECOMMEND,
         SHORTCUT,
         GROUP,
         ACTION,

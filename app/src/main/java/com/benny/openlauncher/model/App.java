@@ -19,6 +19,9 @@ public class App {
     public UserHandle _userHandle;
     public List<ShortcutInfo> _shortcutInfo;
 
+    public App() {
+    }
+
     public App(PackageManager pm, ResolveInfo info, List<ShortcutInfo> shortcutInfo) {
         _icon = info.loadIcon(pm);
         _label = info.loadLabel(pm).toString();

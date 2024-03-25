@@ -18,6 +18,7 @@ import com.benny.openlauncher.activity.HomeActivity;
 import com.benny.openlauncher.interfaces.AppDeleteListener;
 import com.benny.openlauncher.interfaces.AppUpdateListener;
 import com.benny.openlauncher.model.App;
+import com.benny.openlauncher.model.AppRecommend;
 import com.benny.openlauncher.model.Item;
 
 import org.slf4j.Logger;
@@ -100,6 +101,9 @@ public class AppManager {
     }
 
     public App findItemApp(Item item) {
+        if (item.getIntent() == null) {
+            return AppRecommend.getAppFromItem(item);
+        }
         return findApp(item.getIntent());
     }
 
@@ -203,7 +207,7 @@ public class AppManager {
                 List<ResolveInfo> activitiesInfo = _packageManager.queryIntentActivities(intent, 0);
                 for (ResolveInfo info : activitiesInfo) {
                     App app = new App(_packageManager, info, null);
-                    LOG.debug("adding app to non filtered list: {}, {}, {}", app._label,  app._packageName, app._className);
+                    LOG.debug("adding app to non filtered list: {}, {}, {}", app._label, app._packageName, app._className);
                     nonFilteredAppsTemp.add(app);
                 }
             }

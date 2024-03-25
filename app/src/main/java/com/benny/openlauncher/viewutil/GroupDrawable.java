@@ -173,7 +173,7 @@ public class GroupDrawable extends Drawable {
             canvas.clipRect(0, 0, _iconSize, _iconSize, Region.Op.REPLACE);
         }
 
-        canvas.drawCircle(_iconSize / 2, _iconSize / 2, _iconSize / 2 - _outline, _paintOuterCircle);
+//        canvas.drawCircle(_iconSize / 2, _iconSize / 2, _iconSize / 2 - _outline, _paintOuterCircle);
         canvas.restore();
 
         if (_needAnimate) {
