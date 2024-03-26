@@ -229,7 +229,7 @@ public final class HomeActivity extends AppCompatActivity implements OnDesktopEd
             Item appDrawerBtnItem = Item.newActionItem(8);
             appDrawerBtnItem._x = 2;
             _db.saveItem(appDrawerBtnItem, 0, ItemPosition.Dock);
-            getDesktop().postDelayed(this::addRecommend,100);
+            getDesktop().postDelayed(this::addRecommend,1000);
         }
         Setup.appLoader().addUpdateListener(new AppUpdateListener() {
             @Override
